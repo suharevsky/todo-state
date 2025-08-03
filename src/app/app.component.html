@@ -3,6 +3,7 @@
     <input [(ngModel)]="task" placeholder="Новая задача" />
     <button (click)="add()">Добавить</button>
 
+    Counter {{ todoCount$ | async }}
     <ul>
       <li *ngFor="let todo of todos$ | async">
         {{ todo.title }}

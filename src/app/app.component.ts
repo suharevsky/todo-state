@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { addTodo, removeTodo } from './store/todo-actions';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { selectAllTodoState, selectTodoCount } from './store/todo.selectors';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,12 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   task = '';
   todos$: Observable<any>;
+  todoCount$: Observable<number>;
 
 
   constructor(private store: Store<{todoState: TodoState}>) {
-    this.todos$ = store.select(state => state.todoState.todos)
+    this.todos$ = store.select(selectAllTodoState);
+    this.todoCount$ = store.select(selectTodoCount);
   }
 
   add() {

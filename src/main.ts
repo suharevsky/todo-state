@@ -9,7 +9,9 @@ bootstrapApplication(AppComponent, {
   ...appConfig, 
    providers: [
     provideStore({ todoState: todoReducer }),
-    provideStoreDevtools()
+    provideStoreDevtools({
+      maxAge: 25
+    })
   ],
 })
   .catch((err) => console.error(err));
